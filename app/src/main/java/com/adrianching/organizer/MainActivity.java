@@ -1,17 +1,35 @@
 package com.adrianching.organizer;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+
+    Button convert, list, exit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initialize();
+    }
+
+    private void initialize() {
+
+        convert = (Button) findViewById(R.id.bConvert);
+        list = (Button) findViewById(R.id.bList);
+        exit = (Button) findViewById(R.id.bExit);
+
+        convert.setOnClickListener(this);
+        list.setOnClickListener(this);
+        exit.setOnClickListener(this);
+
     }
 
 
@@ -35,5 +53,26 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch(v.getId()) {
+
+            case R.id.bConvert:
+                Intent convertActivity = new Intent("com.adrianching.CONVERTACTIVITY");
+                startActivity(convertActivity);
+                break;
+
+            case R.id.bList:
+                Intent listActivity = new Intent("com.adrianching.LISTACTIVITY");
+                startActivity(listActivity);
+                break;
+
+            case R.id.bExit:
+                super.onStop();
+                break;
+        }
     }
 }

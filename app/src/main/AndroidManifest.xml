@@ -23,6 +23,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.adrianching.organizer.MainActivity" />
+            <intent-filter>
+                <action android:name="com.adrianching.CONVERTACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ListActivity"
@@ -31,6 +35,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.adrianching.organizer.MainActivity" />
+            <intent-filter>
+                <action android:name="com.adrianching.LISTACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 
