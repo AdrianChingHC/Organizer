@@ -3,4 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="bConvert">Convert</string>
+    <string name="bList">List</string>
+    <string name="bExit">Exit</string>
 </resources>
