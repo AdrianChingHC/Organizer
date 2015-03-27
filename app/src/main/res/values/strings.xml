@@ -6,4 +6,7 @@
     <string name="bConvert">Convert</string>
     <string name="bList">List</string>
     <string name="bExit">Exit</string>
+    <string name="tvSelect">Select .txt File</string>
+    <string name="bBrowse">Browse</string>
+    <string name="title_activity_convert">ConvertActivity</string>
 </resources>
