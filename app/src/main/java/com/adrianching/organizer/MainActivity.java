@@ -71,7 +71,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 break;
 
             case R.id.bExit:
-                super.onStop();
+                finish();
                 break;
         }
     }

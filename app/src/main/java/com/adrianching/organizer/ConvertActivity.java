@@ -1,19 +1,36 @@
 package com.adrianching.organizer;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 
-public class ConvertActivity extends ActionBarActivity {
+public class ConvertActivity extends ActionBarActivity implements View.OnClickListener {
+
+    Button convertNow, browse;
+    TextView listFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_convert);
+        initialize();
     }
 
+    private void initialize() {
+
+        convertNow = (Button) findViewById(R.id.bConvertNow);
+        browse = (Button) findViewById(R.id.bBrowse);
+        listFile = (TextView) findViewById(R.id.tvListFile);
+
+        convertNow.setOnClickListener(this);
+        browse.setOnClickListener(this);
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -35,5 +52,24 @@ public class ConvertActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch(v.getId()) {
+
+            case R.id.bConvertNow:
+
+                break;
+
+            case R.id.bBrowse:
+                //Intent browseFile = new Intent(Intent.ACTION_GET_CONTENT);
+                //browseFile.setType("file/txt");
+                //startActivityForResult(browseFile);
+                break;
+
+        }
+
     }
 }
