@@ -8,6 +8,6 @@
     <string name="bExit">Exit</string>
     <string name="tvSelect">Select .txt File</string>
     <string name="bBrowse">Browse</string>
-    <string name="title_activity_convert">ConvertActivity</string>
-    <string name="title_activity_list">ListActivity</string>
+    <string name="title_activity_convert">Convert</string>
+    <string name="title_activity_list">List of Converted Files</string>
 </resources>

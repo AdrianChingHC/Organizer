@@ -25,6 +25,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:text="@string/bConvert"
+                android:textSize="25dp"
                 android:id="@+id/bConvert" />
 
         </LinearLayout>
@@ -40,6 +41,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:text="@string/bList"
+                android:textSize="25dp"
                 android:id="@+id/bList"/>
 
         </LinearLayout>
@@ -57,6 +59,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:text="@string/bExit"
+            android:textSize="25dp"
             android:id="@+id/bExit" />
 
         </LinearLayout>

@@ -14,7 +14,7 @@
         android:gravity="center">
 
         <TextView android:text="@string/tvSelect"
-            android:textSize="30dp" android:layout_width="wrap_content"
+            android:textSize="25dp" android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="60"
             android:gravity="center_horizontal"
@@ -23,7 +23,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:layout_weight="30"
             android:text="@string/bBrowse"
             android:id="@+id/bBrowse" />
@@ -38,9 +38,9 @@
 
 
         <Button
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="150dp"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:text="@string/bConvert"
             android:id="@+id/bConvertNow" />
     </LinearLayout>
