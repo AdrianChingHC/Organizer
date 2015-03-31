@@ -1,5 +1,6 @@
 package com.adrianching.organizer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -64,9 +65,11 @@ public class ConvertActivity extends ActionBarActivity implements View.OnClickLi
                 break;
 
             case R.id.bBrowse:
-                //Intent browseFile = new Intent(Intent.ACTION_GET_CONTENT);
-                //browseFile.setType("file/txt");
-                //startActivityForResult(browseFile);
+                Intent browseFile = new Intent(Intent.ACTION_GET_CONTENT);
+                browseFile.addCategory(Intent.CATEGORY_OPENABLE);
+                browseFile.setType("*/*");
+                Intent i = Intent.createChooser(browseFile, "File");
+                //startActivityForResult(i, CHOOSE_FILE_REQUESTCODE);
                 break;
 
         }

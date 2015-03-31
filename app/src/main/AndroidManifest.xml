@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ListActivity"
+            android:name=".ListFileActivity"
             android:label="@string/title_activity_list"
             android:parentActivityName=".MainActivity" >
             <meta-data
