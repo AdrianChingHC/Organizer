@@ -15,6 +15,8 @@ public class ConvertActivity extends ActionBarActivity implements View.OnClickLi
     Button convertNow, browse;
     TextView listFile;
 
+    private static final int PICKFILE_RESULT_CODE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,13 +68,24 @@ public class ConvertActivity extends ActionBarActivity implements View.OnClickLi
 
             case R.id.bBrowse:
                 Intent browseFile = new Intent(Intent.ACTION_GET_CONTENT);
-                browseFile.addCategory(Intent.CATEGORY_OPENABLE);
-                browseFile.setType("*/*");
+                browseFile.setType("file/txt");
                 Intent i = Intent.createChooser(browseFile, "File");
-                //startActivityForResult(i, CHOOSE_FILE_REQUESTCODE);
+                startActivityForResult(i, PICKFILE_RESULT_CODE);
                 break;
 
         }
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode){
+            case PICKFILE_RESULT_CODE:
+                if (resultCode==RESULT_OK){
+                    String FilePath = data.getData().getPath();
+                    listFile.setText(FilePath);
+                }
+                break;
+        }
     }
 }
