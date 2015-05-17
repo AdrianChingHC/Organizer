@@ -7,39 +7,76 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="100dp"
         android:orientation="horizontal"
-        android:layout_weight="50"
-        android:weightSum="100"
         android:gravity="center">
 
         <TextView android:text="@string/tvSelect"
-            android:textSize="25dp" android:layout_width="wrap_content"
+            android:textSize="25sp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="60"
             android:gravity="center_horizontal"
             android:id="@+id/tvListFile"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:layout_weight="30"
+            android:textSize="20sp"
             android:text="@string/bBrowse"
             android:id="@+id/bBrowse" />
-
     </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:gravity="center">-->
+
+        <!--<TextView android:text="@string/tvSelect"-->
+            <!--android:textSize="25sp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--android:id="@+id/tvListFile2"/>-->
+
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textSize="20sp"-->
+            <!--android:text="@string/bBrowse"-->
+            <!--android:id="@+id/bBrowse2" />-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:gravity="center">-->
+
+        <!--<TextView android:text="@string/tvSelect"-->
+            <!--android:textSize="25sp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--android:id="@+id/tvListFile3"/>-->
+
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textSize="20sp"-->
+            <!--android:text="@string/bBrowse"-->
+            <!--android:id="@+id/bBrowse3" />-->
+    <!--</LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="50"
-        android:gravity="center_horizontal">
+        android:gravity="center">
 
 
         <Button
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:textSize="25dp"
             android:text="@string/bConvert"
             android:id="@+id/bConvertNow" />

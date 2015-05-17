@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.adrianching.organizer" >
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,8 +25,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.adrianching.organizer.MainActivity" />
+
             <intent-filter>
-                <action android:name="com.adrianching.CONVERTACTIVITY"/>
+                <action android:name="com.adrianching.CONVERTACTIVITY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -35,8 +39,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.adrianching.organizer.MainActivity" />
+
             <intent-filter>
-                <action android:name="com.adrianching.LISTACTIVITY"/>
+                <action android:name="com.adrianching.LISTACTIVITY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

@@ -2,11 +2,15 @@ package com.adrianching.organizer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.io.File;
 
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
@@ -61,13 +65,19 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         switch(v.getId()) {
 
             case R.id.bConvert:
-                Intent convertActivity = new Intent("com.adrianching.CONVERTACTIVITY");
+                Intent convertActivity = new Intent(this, ConvertActivity.class);
                 startActivity(convertActivity);
                 break;
 
             case R.id.bList:
-                Intent listActivity = new Intent("com.adrianching.LISTACTIVITY");
-                startActivity(listActivity);
+                String root = Environment.getExternalStorageDirectory().getPath() + "/Organizer";
+                File folder = new File(root);
+                if(!folder.exists()) {
+                    Toast.makeText(getBaseContext(), "No converted files yet.", Toast.LENGTH_LONG).show();
+            }   else {
+                    Intent listActivity = new Intent(this, ListFileActivity.class);
+                    startActivity(listActivity);
+            }
                 break;
 
             case R.id.bExit:

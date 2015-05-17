@@ -2,18 +2,31 @@ package com.adrianching.organizer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import static android.text.TextUtils.substring;
+
 
 
 public class ConvertActivity extends ActionBarActivity implements View.OnClickListener {
 
     Button convertNow, browse;
     TextView listFile;
+    String listPath;
 
     private static final int PICKFILE_RESULT_CODE = 1;
 
@@ -63,12 +76,73 @@ public class ConvertActivity extends ActionBarActivity implements View.OnClickLi
         switch(v.getId()) {
 
             case R.id.bConvertNow:
+                if ((listFile.getText().toString()).equals("Select .txt File")) {
+                    Toast.makeText(getBaseContext(), "No file is selected.", Toast.LENGTH_LONG).show();
+                    break;
+                }
+                else {
 
-                break;
+                    //reading text from file
+                    try {
+
+                        FileInputStream fileIn = new FileInputStream(listPath);
+                        InputStreamReader InputRead = new InputStreamReader(fileIn);
+                        BufferedReader bufferedReader = new BufferedReader(InputRead);
+                        String line;
+                        String dataString = "";
+                        while ((line = bufferedReader.readLine()) != null) {
+                            String line2 = line.replace("|", " ,");
+                            String line3 = line2.replace("$", "\n");
+                            dataString = dataString + line3;
+                        }
+
+
+
+                        try {
+
+                            String dir = Environment.getExternalStorageDirectory().getPath() + "/Organizer";
+                            File folder = new File(dir);
+
+                            boolean var = false;
+                            if (!folder.exists())
+                                var = folder.mkdir();
+
+                            System.out.println("" + var);
+
+                            String fileName = listFile.getText().toString();
+                            int pos = fileName.lastIndexOf(".");
+                            if (pos > 0) {
+                                fileName = fileName.substring(0, pos);
+                            }
+
+                            final String filename = folder.toString() + "/" + fileName + ".csv";
+
+                            FileWriter fw = new FileWriter(filename);
+
+                            fw.append(dataString);
+
+                            fw.close();
+                            Toast.makeText(getBaseContext(), fileName + ".csv is saved to " + dir, Toast.LENGTH_LONG).show();
+
+                        }
+                        catch (IOException ioe)
+                        {ioe.printStackTrace();}
+
+                        fileIn.close();
+
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Intent listActivity = new Intent(this, ListFileActivity.class);
+                    startActivity(listActivity);
+                    break;
+                }
 
             case R.id.bBrowse:
                 Intent browseFile = new Intent(Intent.ACTION_GET_CONTENT);
-                browseFile.setType("file/txt");
+                browseFile.setType("text/plain");
                 Intent i = Intent.createChooser(browseFile, "File");
                 startActivityForResult(i, PICKFILE_RESULT_CODE);
                 break;
@@ -79,13 +153,28 @@ public class ConvertActivity extends ActionBarActivity implements View.OnClickLi
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch(requestCode){
+        switch (requestCode) {
             case PICKFILE_RESULT_CODE:
-                if (resultCode==RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     String FilePath = data.getData().getPath();
-                    listFile.setText(FilePath);
+                    String FileName = data.getData().getLastPathSegment();
+                    if (substring(FileName, FileName.indexOf( "."), FileName.length()).equals(".txt")) {
+                        listFile.setText(FileName);
+                        listPath = FilePath;
+                    }
+                    else {
+                        Toast.makeText(getBaseContext(), FileName + " is invalid",Toast.LENGTH_LONG).show();
+                        FileName = "";
+                    }
+
+
                 }
                 break;
+
         }
     }
+
+
+
+
 }
