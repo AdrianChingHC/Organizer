@@ -53,12 +53,10 @@ public class ListFileActivity extends ActionBarActivity {
             File f = new File(dirPath);
             File[] files = f.listFiles();
 
-        if(!dirPath.equals(root)){
-            item.add(root);
-            path.add(root);
-            item.add("../");
-            path.add(f.getParent());
-        }
+	        if(!dirPath.equals(root)){
+	            item.add(root);
+	            path.add(root);
+	        }
 
             for (int i=0; i < files.length; i++){
                 File file = files[i];
@@ -70,8 +68,8 @@ public class ListFileActivity extends ActionBarActivity {
                     }
                 }
             }
-            ArrayAdapter<String> fileList = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, item);
-            setListAdapter(fileList);
+          ArrayAdapter<String> fileList = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, item);
+          setListAdapter(fileList);
         }
 
         public void onListItemClick(ListView l, View v, int position, long id){
