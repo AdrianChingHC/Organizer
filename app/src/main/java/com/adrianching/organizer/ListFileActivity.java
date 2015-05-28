@@ -1,6 +1,5 @@
 package com.adrianching.organizer;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -58,12 +57,10 @@ public class ListFileActivity extends ActionBarActivity {
 	            path.add(root);
 	        }
 
-            for (int i=0; i < files.length; i++){
-                File file = files[i];
-
-                if (!file.isHidden() && file.canRead()){
+            for (File file : files) {
+                if (!file.isHidden() && file.canRead()) {
                     path.add(file.getPath());
-                    if (!file.isDirectory()){
+                    if (!file.isDirectory()) {
                         item.add(file.getName());
                     }
                 }
@@ -73,22 +70,11 @@ public class ListFileActivity extends ActionBarActivity {
         }
 
         public void onListItemClick(ListView l, View v, int position, long id){
-            File file = new File(path.get(position));
-
-            if (file.isDirectory()){
-                if (file.canRead()){
-                    getDir(path.get(position));
-                }
-                else {
-                    new AlertDialog.Builder(getActivity()).setTitle("[" + file.getName() + "] folder can't be read!").setPositiveButton("OK", null).show();
-                }
-            }else {
                 Intent intent = new Intent();
                 intent.setAction(android.content.Intent.ACTION_VIEW);
                 File files = new File(path.get(position));
                 intent.setDataAndType(Uri.fromFile(files), "text/csv");
                 startActivity(intent);
-            }
         }
     }
 }
